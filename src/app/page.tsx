@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { getAIBrandOutput } from "@/utils/api"; // Import the API function
 
@@ -15,25 +15,26 @@ import img1 from "./SecondImage.jpg";
 import FeaturesBar from "@/components/Box/Box";
 import PortfolioHighlights from "@/components/Portfolio/Portfolio";
 
-export default function Home() {
+function HomeComponent() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
 
-  const [brandOutput, setBrandOutput] = useState<any>(null); // Holds entire response
-  const [brandName, setBrandName] = useState<string>(""); // Holds brandName
-  const [inputData, setInputData] = useState<any>(null); // Parsed input data
-  const [outputData, setOutputData] = useState<any>(null); // Parsed output data
+  const [brandOutput, setBrandOutput] = useState<any>(null);
+  const [brandName, setBrandName] = useState<string>("");
+  const [outputData, setOutputData] = useState<any>(null);
 
   useEffect(() => {
     if (!id) return; // Avoid running fetch when there is no ID
     const getBrandData = async () => {
       try {
         const data = await getAIBrandOutput(id);
-        console.log("API Data:", data); // Log the API response
+        console.log("API Data:", data);
 
         setBrandOutput(data);
+        setBrandName(data?.brandName || "");
         setOutputData(data?.output ? JSON.parse(data?.output) : {});
 
+        // Set primary color globally in Tailwind
         const fontColor = data?.output ? JSON.parse(data?.output)?.fontColor : "#000000";
         document.documentElement.style.setProperty("--primary-color", fontColor);
       } catch (err) {
@@ -41,21 +42,15 @@ export default function Home() {
       }
     };
     getBrandData();
-
-    
-    
-  }, [id]);
+  }, [id]); // Added `id` as a dependency
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col">
       <Navbar logoUrl={outputData?.logoURL} />
       <div className="flex flex-col gap-12">
-        
-        <HeroSection
-          tagLine={outputData?.tagline}
-          brandName={brandOutput?.brandName}
-        />
+        <HeroSection tagLine={outputData?.tagline} brandName={brandOutput?.brandName} />
         <FeaturesBar />
+
         {/* Section-1: How it works */}
         <SectionHowItWorks />
 
@@ -67,45 +62,44 @@ export default function Home() {
 
         <PortfolioHighlights />
 
-        {/* Display the parsed brand name and output data */}
+        {/* Display brand name */}
         <div className="mt-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-center">
-            {brandName}
-          </h2>
-          
+          <h2 className="text-2xl md:text-3xl font-bold text-center">{brandName}</h2>
         </div>
       </div>
     </div>
   );
 }
 
-// Section for "How it works"
+// Wrap in Suspense for `useSearchParams()`
+export default function Home() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomeComponent />
+    </Suspense>
+  );
+}
+
+// Section: How it works
 const SectionHowItWorks = () => (
   <div
-    className="flex flex-col justify-center gap-7 mt-10  "
+    className="flex flex-col justify-center gap-7 mt-10"
     style={{
-      backgroundImage:
-        "url(https://s3-alpha-sig.figma.com/img/9cdf/f64d/dafdab4893da00900aaeedb7dbd7c76c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=aTcwqF1VSlN-5Ll-Dk54LVAXIy~YE2TJWfkDygrUs7OImldUNl8i8KK-s5rtDXLyyLcXIen5YnHx5fVTGmeHNozNNqzKNe-pbUWRFiSKY9KQxyDPY41TNAMdzW3UeWGvRiF~UM-bGNPRhquODP51krtFwj89COfVqAFUHcJiAJCMCbkf-MRgjQ5f-YGG2cIQjLh1PwPybkTrFKhtmH9q3nak9I8Pnbz31j5paQASMo837I0cQkHhF5ccNrH4urhmesf9eDu9j9L5XednTEO4BOREnregkstkSbyDzI5IJPxp1vA2bdZMrS4KNj-p0vc-WyIpaDjP96Z7LtzTeV4o6Q__)",
+      backgroundImage: "url(https://s3-alpha-sig.figma.com/img/9cdf/f64d/dafdab4893da00900aaeedb7dbd7c76c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=aTcwqF1VSlN-5Ll-Dk54LVAXIy~YE2TJWfkDygrUs7OImldUNl8i8KK-s5rtDXLyyLcXIen5YnHx5fVTGmeHNozNNqzKNe-pbUWRFiSKY9KQxyDPY41TNAMdzW3UeWGvRiF~UM-bGNPRhquODP51krtFwj89COfVqAFUHcJiAJCMCbkf-MRgjQ5f-YGG2cIQjLh1PwPybkTrFKhtmH9q3nak9I8Pnbz31j5paQASMo837I0cQkHhF5ccNrH4urhmesf9eDu9j9L5XednTEO4BOREnregkstkSbyDzI5IJPxp1vA2bdZMrS4KNj-p0vc-WyIpaDjP96Z7LtzTeV4o6Q__)",
     }}
   >
     <div className="flex flex-col justify-center gap-7 bg-primary opacity-80 py-12">
-
-    <h2 className="text-2xl md:text-3xl text-white font-bold text-center">How it works</h2>
-    <div className="flex flex-wrap justify-center gap-6">
-      {cardData.map((item, index) => (
-        <SelectPlanCard
-        key={index}
-        title={item.heading}
-        text={item.text}
-        icon={item.icon}
-        />
-      ))}
+      <h2 className="text-2xl md:text-3xl text-white font-bold text-center">How it works</h2>
+      <div className="flex flex-wrap justify-center gap-6">
+        {cardData.map((item, index) => (
+          <SelectPlanCard key={index} title={item.heading} text={item.text} icon={item.icon} />
+        ))}
+      </div>
     </div>
-  </div>
   </div>
 );
 
-// Section for Pricing Plans
+// Section: Pricing Plans
 const SectionPricingPlans = () => (
   <div className="flex flex-col gap-10">
     <h2 className="text-2xl md:text-3xl font-bold text-center">
@@ -126,7 +120,7 @@ const SectionPricingPlans = () => (
   </div>
 );
 
-// Section for Network Cards
+// Section: Network Cards
 const SectionNetworkCards = () => (
   <div className="flex flex-col gap-10">
     <NetworkCard
