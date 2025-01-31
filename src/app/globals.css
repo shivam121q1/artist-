@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* styles/globals.css */
+:root {
+  --primary-color: #3490dc; /* Set a fallback default color */
+}
+
+@layer base {
+  .text-primary {
+    color: var(--primary-color);
+  }
+
+  .bg-primary {
+    background-color: var(--primary-color);
+  }
+}
