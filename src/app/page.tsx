@@ -10,8 +10,8 @@ import CrazyForYouPlanCard from "@/components/cardPlan/cardPlan";
 import NetworkCard from "@/components/MainCard/MainCard";
 import { cardData, planData } from "@/data/card";
 
-import img from "./firstImage.jpg";
-import img1 from "./SecondImage.jpg";
+import img from "./image1.jpg";
+import img1 from "./image2.jpg";
 import FeaturesBar from "@/components/Box/Box";
 import PortfolioHighlights from "@/components/Portfolio/Portfolio";
 
@@ -85,7 +85,7 @@ const SectionHowItWorks = () => (
   <div
     className="flex flex-col justify-center gap-7 mt-10"
     style={{
-      backgroundImage: "url(https://s3-alpha-sig.figma.com/img/9cdf/f64d/dafdab4893da00900aaeedb7dbd7c76c?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=aTcwqF1VSlN-5Ll-Dk54LVAXIy~YE2TJWfkDygrUs7OImldUNl8i8KK-s5rtDXLyyLcXIen5YnHx5fVTGmeHNozNNqzKNe-pbUWRFiSKY9KQxyDPY41TNAMdzW3UeWGvRiF~UM-bGNPRhquODP51krtFwj89COfVqAFUHcJiAJCMCbkf-MRgjQ5f-YGG2cIQjLh1PwPybkTrFKhtmH9q3nak9I8Pnbz31j5paQASMo837I0cQkHhF5ccNrH4urhmesf9eDu9j9L5XednTEO4BOREnregkstkSbyDzI5IJPxp1vA2bdZMrS4KNj-p0vc-WyIpaDjP96Z7LtzTeV4o6Q__)",
+      backgroundImage: "url(https://res.cloudinary.com/drcoe5pnl/image/upload/v1738402219/nextjs_uploads/jucefbvnwbzfbsnynl2s.jpg)",
     }}
   >
     <div className="flex flex-col justify-center gap-7 bg-primary opacity-80 py-12">
@@ -134,7 +134,7 @@ const SectionNetworkCards = () => (
       description="Experience unmatched coverage and lightning-fast speeds on America’s best network. Stay connected anywhere with reliable service you can trust."
       buttonText="Check Coverage"
       imageSrc={img1}
-      classs="flex flex-col md:flex-row-reverse"
+      classs="flex flex-col md:flex-row-reverse ml-20"
     />
   </div>
 );
