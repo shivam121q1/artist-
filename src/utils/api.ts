@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://13.202.181.37:9006/wuelev8/api/v1/aibuilder";
+const API_BASE_URL = "https://api-aibuilder.whereuelevate.com/wuelev8/api/v1/aibuilder";
 
 // Define the expected structure of the API response
 interface AIBrandResponse {
