@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { formatText } from "@/utils/function";
 
 interface HeroSectionProps {
   tagLine: string;
@@ -24,9 +25,11 @@ export default function HeroSection({ tagLine, brandName }: HeroSectionProps) {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
             {brandName}
           </h1>
-          <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">
-            {tagLine}
-          </h3>
+          {tagLine && ( // Render only if tagLine exists
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">
+              {formatText(tagLine)}
+            </h3>
+          )}
           <Button className="bg-red-500 text-white px-6 py-3 sm:px-4 sm:py-2 font-semibold rounded-lg hover:bg-red-600">
             Upcoming Event
           </Button>

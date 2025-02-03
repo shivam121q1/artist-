@@ -12,12 +12,12 @@ interface CrazyForYouPlanCardProps {
 
 export default function CrazyForYouPlanCard({ title, price, duration, description, features }: CrazyForYouPlanCardProps) {
   return (
-    <div className="flex justify-center items-center ">
-      <Card className="w-72 p-4 rounded-2xl shadow-md h-96">
+    <div className="flex justify-center items-center">
+      <Card className="w-72 p-4 rounded-2xl shadow-md h-96 flex flex-col">
         <CardHeader className="text-center">
           <CardTitle className="text-lg font-bold">{title}</CardTitle>
         </CardHeader>
-        <CardContent className="text-center">
+        <CardContent className="text-center flex-grow">
           <p className="text-3xl font-extrabold mt-2">
             {price} <span className="text-sm font-normal">{duration}</span>
           </p>
@@ -32,7 +32,9 @@ export default function CrazyForYouPlanCard({ title, price, duration, descriptio
             ))}
           </div>
         </CardContent>
-        <CardFooter className="flex flex-col items-center space-y-2 mt-4">
+        
+        {/* Push Footer to the Bottom */}
+        <CardFooter className="mt-auto flex flex-col items-center space-y-2 pb-2">
           <Button className="w-full bg-black bg-primary text-white hover:bg-gray-800">Select Plan</Button>
           <p className="text-xs text-gray-500 underline">Broadband Facts ©</p>
         </CardFooter>

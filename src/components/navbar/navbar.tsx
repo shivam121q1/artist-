@@ -15,10 +15,10 @@ export default function Navbar({title,logoUrl}:NavbarProps) {
     <nav className="p-4 border-b-2 border-blue-500 mx-10">
       <div className="flex justify-between items-center">
         {/* Brand */}
-        <div className="flex gap-2 items-center justify-center">
+        <div className="flex gap-2 items-center justify-center w-30">
           {logoUrl && <Image
-            height={40}
-            width={80}
+            height={100}
+            width={100}
             src={logoUrl}
             alt="logo"
           />}

@@ -64,7 +64,7 @@ function HomeComponent() {
 
         {/* Display brand name */}
         <div className="mt-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-center">{brandName}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-center">@Info {brandName}</h2>
         </div>
       </div>
     </div>
