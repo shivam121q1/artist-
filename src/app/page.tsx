@@ -14,6 +14,7 @@ import img from "./image1.jpg";
 import img1 from "./image2.jpg";
 import FeaturesBar from "@/components/Box/Box";
 import PortfolioHighlights from "@/components/Portfolio/Portfolio";
+import AboutUs from "@/components/AboutUs/Aboutus";
 
 function HomeComponent() {
   const searchParams = useSearchParams();
@@ -49,6 +50,8 @@ function HomeComponent() {
       <Navbar logoUrl={outputData?.logoURL} />
       <div className="flex flex-col gap-12">
         <HeroSection tagLine={outputData?.tagline} brandName={brandOutput?.brandName} />
+        <AboutUs  Tagline={outputData?.tagline} description={outputData?.description} />
+
         <FeaturesBar />
 
         {/* Section-1: How it works */}
