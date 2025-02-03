@@ -4,5 +4,5 @@ export  function formatText(text: string): string {
 
 export const getSubstringAfterLastDoubleAsterisk = (text:string) : string => {
     const lastIndex = text.lastIndexOf("**");
-    return lastIndex !== -1 ? text.substring(lastIndex + 2) : "";
+    return lastIndex !== -1 ? text.substring(lastIndex + 2) : text;
 }
