@@ -20,8 +20,8 @@ export default function HeroSection({ tagLine, brandName }: HeroSectionProps) {
       <div className="absolute inset-0 bg-primary opacity-20"></div>
 
       {/* Text Content */}
-      <div className="relative z-10 text-white px-6 sm:px-8 max-w-4xl mr-auto ml-20">
-        <div className="flex flex-col gap-4 items-start max-w-md">
+      <div className="relative z-10 text-white px-6 sm:px-8 max-w-[800px] mr-auto ml-20">
+        <div className="flex flex-col gap-4 items-start max-w-[600px]">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
             {brandName}
           </h1>
@@ -30,9 +30,7 @@ export default function HeroSection({ tagLine, brandName }: HeroSectionProps) {
               {formatText(tagLine)}
             </h3>
           )}
-          <Button className="bg-red-500 text-white px-6 py-3 sm:px-4 sm:py-2 font-semibold rounded-lg hover:bg-red-600">
-            Upcoming Event
-          </Button>
+          
         </div>
       </div>
     </div>
