@@ -17,7 +17,7 @@ function trimBetweenAsterisks(str: string): string {
 
 const AboutUs = ({ Tagline, description }: AboutUsProps) => {
   const imageSrc =
-    "https://res.cloudinary.com/drcoe5pnl/image/upload/v1738573584/nextjs_uploads/ptgmop5jngtz2vu05fxx.png";
+    "https://res.cloudinary.com/drcoe5pnl/image/upload/v1738588245/nextjs_uploads/ez7apnjybsxm5joxr5ql.png";
 
   return (
     <div id="about" className="my-20 flex justify-center items-center">
@@ -27,7 +27,7 @@ const AboutUs = ({ Tagline, description }: AboutUsProps) => {
             className="relative h-[360px] w-full bg-cover bg-center opacity-90 rounded-lg "
             style={{
               backgroundImage:
-                "url(https://res.cloudinary.com/drcoe5pnl/image/upload/v1738573409/nextjs_uploads/rzcoyrq1wkwiaqwiokw8.webp)"
+                "url(https://res.cloudinary.com/drcoe5pnl/image/upload/v1738588245/nextjs_uploads/ez7apnjybsxm5joxr5ql.png)"
             }}
           >
             <div className="absolute inset-0 bg-primary opacity-40"></div>
